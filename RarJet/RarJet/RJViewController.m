@@ -13,15 +13,22 @@
 
 static NSString * const RJCellIdentifier = @"autocompletionCell";
 static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design spec
+static const NSInteger RJFirstViewTag = 1111;
+static const NSInteger RJSecondViewTag = 2222;
+static const NSInteger RJThirdViewTag = 3333;
+static const NSInteger RJFourthViewTag = 4444;
+static const NSTimeInterval RJDisappearingAnimationDuration = 0.75;
 
 @interface RJViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *fromTextField; //delegate is set from IB
 @property (weak, nonatomic) IBOutlet UITextField *toTextField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, strong) RJDataManager *dataManager;
 @property (nonatomic, strong) NSArray *dataSourceArray; //RJLocation objects
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomSpaceConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (nonatomic, weak) IBOutlet UITableView *autocompleteTableView;
 @end
 
@@ -32,6 +39,7 @@ static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design
     // Do any additional setup after loading the view, typically from a nib.
     [RJLocationManager manager];
     self.dataManager = [[RJDataManager alloc] init];
+    [self.datePicker setMinimumDate:[NSDate date]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,7 +57,7 @@ static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design
     __weak typeof(self) weakSelf = self;
     [self.dataManager fetchResultsWithSearchString:searchString
                                            success:^(NSDictionary *responseDictionary) {
-                                               __strong typeof(self) strongSelf = weakSelf;
+                                               __strong typeof(weakSelf) strongSelf = weakSelf;
                                                if (responseDictionary == nil) {
                                                    strongSelf.dataSourceArray = nil;
                                                }
@@ -70,16 +78,7 @@ static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design
                                                });
                                            }
                                            failure:^(NSError *error) {
-//                                               __strong typeof(self) strongSelf = weakSelf;
-//                                               UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-//                                                                                                              message:@"An error occurred"
-//                                                                                                       preferredStyle:UIAlertControllerStyleAlert];
-//                                               UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                                                                     handler:^(UIAlertAction *action) {
-//                                                                                                         
-//                                                                                                     }];
-//                                               [alert addAction:defaultAction];
-//                                               [strongSelf presentViewController:alert animated:YES completion:nil];
+                                               //since autocompletion is a fast operation, we shouldn't show all the errors we get, it would slow us down while typing
                                            }];
 }
 
@@ -96,9 +95,31 @@ static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design
     else if ([self.toTextField isFirstResponder]) {
         return self.toTextField;
     }
-    else {
-        return nil;
-    }
+    return nil;
+}
+
+- (void)setAlpha:(CGFloat)alpha ofViews:(NSArray *)viewsArray {
+    [UIView animateWithDuration:RJDisappearingAnimationDuration
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         for (UIView *view in viewsArray) {
+                             [view setAlpha:alpha];
+                         }
+                     }
+                     completion:nil];
+}
+
+- (IBAction)searchButtonTapped:(UIButton *)sender {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil)
+                                                                   message:NSLocalizedString(@"Search is not implemented yet", nil)
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:nil];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+
 }
 
 #pragma mark - UITextFieldDelegate methods
@@ -109,14 +130,29 @@ static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design
     CGFloat textFieldYPos = textFieldFrame.origin.y - RJVerticalTextFieldMargin;
     [self.mainScrollView setContentOffset:CGPointMake(0.f, textFieldYPos) animated:YES];
     
+    //everything disappears
+    NSArray *sectionViewsArray = @[[textField isEqual:self.fromTextField] ? [self.mainScrollView viewWithTag:RJSecondViewTag] : [self.mainScrollView viewWithTag:RJFirstViewTag], [self.mainScrollView viewWithTag:RJThirdViewTag], [self.mainScrollView viewWithTag:RJFourthViewTag]];
+    [self setAlpha:0.f ofViews:sectionViewsArray];
+    
     if (textField.text.length > 0) {
         [self searchWithString:textField.text];
+    }
+    else {
+        self.dataSourceArray = nil;
+        [self.autocompleteTableView reloadData];
     }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [self.mainScrollView setContentOffset:CGPointMake(0.f, -self.mainScrollView.contentInset.top) animated:YES];
     [self.dataManager cancelNetworkOperations];
+    
+    //everything re-appears
+    NSArray *sectionViewsArray = @[[self.mainScrollView viewWithTag:RJFirstViewTag], [self.mainScrollView viewWithTag:RJSecondViewTag], [self.mainScrollView viewWithTag:RJThirdViewTag], [self.mainScrollView viewWithTag:RJFourthViewTag]];
+    [self setAlpha:1.f ofViews:sectionViewsArray];
+    
+    //refresh search button status
+    [self.searchButton setEnabled:(self.fromTextField.text.length > 0 && self.toTextField.text.length > 0)];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -155,6 +191,7 @@ static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RJCellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:RJCellIdentifier];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
     [self configureCell:cell withRowIndex:indexPath.row];
     return cell;
@@ -180,7 +217,7 @@ static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design
                           delay:0.f
                         options:(keyboardAnimationCurve<<16)
                      animations:^{
-                         __strong typeof(self) strongSelf = weakSelf;
+                         __strong typeof(weakSelf) strongSelf = weakSelf;
                          strongSelf.autocompleteTableView.alpha = 1.f;
                          [strongSelf.view layoutIfNeeded];
                      }
@@ -199,7 +236,7 @@ static const CGFloat RJVerticalTextFieldMargin = 20.f; //arbitrary value, design
                           delay:0.f
                         options:(keyboardAnimationCurve<<16)
                      animations:^{
-                         __strong typeof(self) strongSelf = weakSelf;
+                         __strong typeof(weakSelf) strongSelf = weakSelf;
                          strongSelf.autocompleteTableView.alpha = 0.f;
                          [strongSelf.view layoutIfNeeded];
                      }

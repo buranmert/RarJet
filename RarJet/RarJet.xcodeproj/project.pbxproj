@@ -41,6 +41,12 @@
 		0F8905941ABEF04900D72E52 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8905931ABEF04900D72E52 /* CoreLocation.framework */; };
 		0F89059C1ABEF0EC00D72E52 /* RJLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89059B1ABEF0EC00D72E52 /* RJLocationManager.m */; };
 		0F89059D1ABEF0EC00D72E52 /* RJLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89059B1ABEF0EC00D72E52 /* RJLocationManager.m */; };
+		0F8905A11ABF442900D72E52 /* RJTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8905A01ABF442900D72E52 /* RJTextField.m */; };
+		0F8905A21ABF442900D72E52 /* RJTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8905A01ABF442900D72E52 /* RJTextField.m */; };
+		0F8905A51ABF52C700D72E52 /* RJFancyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8905A41ABF52C700D72E52 /* RJFancyLabel.m */; };
+		0F8905A61ABF52C700D72E52 /* RJFancyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8905A41ABF52C700D72E52 /* RJFancyLabel.m */; };
+		0F8905AA1ABF552500D72E52 /* RJRandomColorGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8905A91ABF552500D72E52 /* RJRandomColorGenerator.m */; };
+		0F8905AB1ABF552500D72E52 /* RJRandomColorGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8905A91ABF552500D72E52 /* RJRandomColorGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +101,12 @@
 		0F8905931ABEF04900D72E52 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0F89059A1ABEF0EC00D72E52 /* RJLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RJLocationManager.h; sourceTree = "<group>"; };
 		0F89059B1ABEF0EC00D72E52 /* RJLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RJLocationManager.m; sourceTree = "<group>"; };
+		0F89059F1ABF442900D72E52 /* RJTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RJTextField.h; sourceTree = "<group>"; };
+		0F8905A01ABF442900D72E52 /* RJTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RJTextField.m; sourceTree = "<group>"; };
+		0F8905A31ABF52C700D72E52 /* RJFancyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RJFancyLabel.h; sourceTree = "<group>"; };
+		0F8905A41ABF52C700D72E52 /* RJFancyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RJFancyLabel.m; sourceTree = "<group>"; };
+		0F8905A81ABF552500D72E52 /* RJRandomColorGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RJRandomColorGenerator.h; sourceTree = "<group>"; };
+		0F8905A91ABF552500D72E52 /* RJRandomColorGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RJRandomColorGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +150,8 @@
 		0F4D9E901ABE38A900E0DB03 /* RarJet */ = {
 			isa = PBXGroup;
 			children = (
+				0F8905A71ABF550E00D72E52 /* Utils */,
+				0F89059E1ABF441700D72E52 /* Views */,
 				0F8905951ABEF06300D72E52 /* Frameworks */,
 				0F89058E1ABEE00500D72E52 /* Models */,
 				0F8905891ABED99000D72E52 /* Data Managers */,
@@ -259,6 +273,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0F89059E1ABF441700D72E52 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F89059F1ABF442900D72E52 /* RJTextField.h */,
+				0F8905A01ABF442900D72E52 /* RJTextField.m */,
+				0F8905A31ABF52C700D72E52 /* RJFancyLabel.h */,
+				0F8905A41ABF52C700D72E52 /* RJFancyLabel.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0F8905A71ABF550E00D72E52 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0F8905A81ABF552500D72E52 /* RJRandomColorGenerator.h */,
+				0F8905A91ABF552500D72E52 /* RJRandomColorGenerator.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -364,9 +398,12 @@
 				0F4D9E9A1ABE38A900E0DB03 /* RJViewController.m in Sources */,
 				0F4D9ECE1ABED44E00E0DB03 /* AFHTTPRequestOperationManager.m in Sources */,
 				0F4D9ED21ABED44E00E0DB03 /* AFNetworkReachabilityManager.m in Sources */,
+				0F8905A11ABF442900D72E52 /* RJTextField.m in Sources */,
+				0F8905A51ABF52C700D72E52 /* RJFancyLabel.m in Sources */,
 				0F4D9EDA1ABED44E00E0DB03 /* AFURLResponseSerialization.m in Sources */,
 				0F4D9ED61ABED44E00E0DB03 /* AFURLConnectionOperation.m in Sources */,
 				0F4D9ED41ABED44E00E0DB03 /* AFSecurityPolicy.m in Sources */,
+				0F8905AA1ABF552500D72E52 /* RJRandomColorGenerator.m in Sources */,
 				0F89058C1ABED9A600D72E52 /* RJDataManager.m in Sources */,
 				0F4D9ED01ABED44E00E0DB03 /* AFHTTPSessionManager.m in Sources */,
 				0F4D9ED81ABED44E00E0DB03 /* AFURLRequestSerialization.m in Sources */,
@@ -382,11 +419,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F8905AB1ABF552500D72E52 /* RJRandomColorGenerator.m in Sources */,
 				0F4D9ED71ABED44E00E0DB03 /* AFURLConnectionOperation.m in Sources */,
 				0F4D9EDB1ABED44E00E0DB03 /* AFURLResponseSerialization.m in Sources */,
 				0F4D9ECD1ABED44E00E0DB03 /* AFHTTPRequestOperation.m in Sources */,
 				0F4D9EAE1ABE38A900E0DB03 /* RarJetTests.m in Sources */,
 				0F4D9ED31ABED44E00E0DB03 /* AFNetworkReachabilityManager.m in Sources */,
+				0F8905A21ABF442900D72E52 /* RJTextField.m in Sources */,
+				0F8905A61ABF52C700D72E52 /* RJFancyLabel.m in Sources */,
 				0F4D9EDD1ABED44E00E0DB03 /* AFURLSessionManager.m in Sources */,
 				0F4D9ECF1ABED44E00E0DB03 /* AFHTTPRequestOperationManager.m in Sources */,
 				0F8905921ABEE04500D72E52 /* RJLocation.m in Sources */,
@@ -513,6 +553,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -524,6 +565,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

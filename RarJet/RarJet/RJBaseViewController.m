@@ -12,11 +12,12 @@
 
 @end
 
-@implementation RJBaseViewController
+@implementation RJBaseViewController //for future-use. might have been useful if i implemented localization-on-the-fly
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title = NSLocalizedString(@"RarJet", nil);
 }
 
 @end

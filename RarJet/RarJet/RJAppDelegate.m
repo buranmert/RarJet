@@ -7,6 +7,7 @@
 //
 
 #import "RJAppDelegate.h"
+#import "RJRandomColorGenerator.h"
 
 @interface RJAppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UINavigationBar appearance] setBarTintColor:[RJRandomColorGenerator generateRandomColor]];
+    [[UINavigationBar appearance] setTintColor:[RJRandomColorGenerator generateRandomColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [RJRandomColorGenerator generateRandomColor]}];
     return YES;
 }
 

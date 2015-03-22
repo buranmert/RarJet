@@ -19,11 +19,11 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCK-ig-9ip" userLabel="Main Scroll View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrP-MZ-2AF" userLabel="First View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                    <view tag="1111" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrP-MZ-2AF" userLabel="First View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-k7-dy5" userLabel="From Text Field">
-                                                <rect key="frame" x="20" y="20" width="560" height="20"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="From" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-k7-dy5" userLabel="From Text Field" customClass="RJTextField">
+                                                <rect key="frame" x="20" y="20" width="560" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                 <connections>
@@ -31,20 +31,20 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.19922115200000001" green="1" blue="0.12841770490000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Mwa-k7-dy5" firstAttribute="leading" secondItem="FrP-MZ-2AF" secondAttribute="leading" constant="20" id="3xn-Ne-QyP"/>
                                             <constraint firstItem="Mwa-k7-dy5" firstAttribute="top" secondItem="FrP-MZ-2AF" secondAttribute="top" constant="20" id="7TO-Vc-NvL"/>
                                             <constraint firstAttribute="bottom" secondItem="Mwa-k7-dy5" secondAttribute="bottom" constant="20" id="UEZ-Cg-hxM"/>
-                                            <constraint firstAttribute="height" constant="60" id="YoA-3p-DwO"/>
+                                            <constraint firstAttribute="height" constant="90" id="YoA-3p-DwO"/>
                                             <constraint firstAttribute="trailing" secondItem="Mwa-k7-dy5" secondAttribute="trailing" constant="20" id="mjq-UK-xxq"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW8-gR-Xqz" userLabel="Second View">
-                                        <rect key="frame" x="0.0" y="60" width="600" height="60"/>
+                                    <view tag="2222" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW8-gR-Xqz" userLabel="Second View">
+                                        <rect key="frame" x="0.0" y="90" width="600" height="90"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-5H-KRX" userLabel="To Text Field">
-                                                <rect key="frame" x="20" y="20" width="560" height="20"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="To" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-5H-KRX" userLabel="To Text Field" customClass="RJTextField">
+                                                <rect key="frame" x="20" y="20" width="560" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                 <connections>
@@ -52,7 +52,7 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.2259297062" green="0.43087753220000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="uj7-5H-KRX" firstAttribute="top" secondItem="hW8-gR-Xqz" secondAttribute="top" constant="20" id="SxB-l2-okE"/>
                                             <constraint firstAttribute="bottom" secondItem="uj7-5H-KRX" secondAttribute="bottom" constant="20" id="XvU-cL-9D8"/>
@@ -60,30 +60,74 @@
                                             <constraint firstAttribute="trailing" secondItem="uj7-5H-KRX" secondAttribute="trailing" constant="20" id="nMO-MW-6Ly"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-6p-uRn" userLabel="Third View">
-                                        <rect key="frame" x="0.0" y="120" width="600" height="60"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <view tag="3333" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-6p-uRn" userLabel="Third View">
+                                        <rect key="frame" x="0.0" y="220" width="600" height="90"/>
+                                        <subviews>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="osg-Dx-4Lh">
+                                                <rect key="frame" x="0.0" y="-36" width="600" height="162"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="448743597.60979903">
+                                                    <!--2015-03-22 18:59:57 +0000-->
+                                                </date>
+                                            </datePicker>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="osg-Dx-4Lh" firstAttribute="leading" secondItem="Dd5-6p-uRn" secondAttribute="leading" id="Dd2-rP-Nna"/>
+                                            <constraint firstItem="osg-Dx-4Lh" firstAttribute="top" secondItem="Dd5-6p-uRn" secondAttribute="top" id="RVO-gA-WSD"/>
+                                            <constraint firstAttribute="bottom" secondItem="osg-Dx-4Lh" secondAttribute="bottom" id="cqJ-bN-3a7"/>
+                                            <constraint firstAttribute="trailing" secondItem="osg-Dx-4Lh" secondAttribute="trailing" id="huu-dT-a78"/>
+                                        </constraints>
+                                    </view>
+                                    <view tag="4444" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAN-FR-x4z" userLabel="Fourth View">
+                                        <rect key="frame" x="0.0" y="350" width="600" height="90"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dii-R7-SSZ" userLabel="Search Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                <state key="normal" title="Search">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <state key="disabled" title="Fill the form to search">
+                                                    <color key="titleColor" red="1" green="0.1950511056" blue="0.1585655611" alpha="0.48999999999999999" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="highlighted" title="Searching"/>
+                                                <connections>
+                                                    <action selector="searchButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hKs-u0-Quw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="dii-R7-SSZ" firstAttribute="leading" secondItem="BAN-FR-x4z" secondAttribute="leading" id="3eg-qU-PVG"/>
+                                            <constraint firstAttribute="trailing" secondItem="dii-R7-SSZ" secondAttribute="trailing" id="N9l-tq-lYL"/>
+                                            <constraint firstItem="dii-R7-SSZ" firstAttribute="top" secondItem="BAN-FR-x4z" secondAttribute="top" id="gub-ND-OYT"/>
+                                            <constraint firstAttribute="bottom" secondItem="dii-R7-SSZ" secondAttribute="bottom" id="mUH-SN-Rb6"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.1950511056" blue="0.1585655611" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="BAN-FR-x4z" firstAttribute="top" secondItem="Dd5-6p-uRn" secondAttribute="bottom" constant="40" id="05o-WJ-oFp"/>
                                     <constraint firstItem="FrP-MZ-2AF" firstAttribute="top" secondItem="KCK-ig-9ip" secondAttribute="top" id="4vu-n4-Q80"/>
-                                    <constraint firstAttribute="bottom" secondItem="Dd5-6p-uRn" secondAttribute="bottom" id="9fP-0Q-oqi"/>
                                     <constraint firstItem="hW8-gR-Xqz" firstAttribute="height" secondItem="Dd5-6p-uRn" secondAttribute="height" id="Hwq-uu-MIk"/>
-                                    <constraint firstItem="Dd5-6p-uRn" firstAttribute="top" secondItem="hW8-gR-Xqz" secondAttribute="bottom" id="IJ8-8s-Rcz"/>
+                                    <constraint firstItem="Dd5-6p-uRn" firstAttribute="top" secondItem="hW8-gR-Xqz" secondAttribute="bottom" constant="40" id="IJ8-8s-Rcz"/>
                                     <constraint firstItem="hW8-gR-Xqz" firstAttribute="width" secondItem="FrP-MZ-2AF" secondAttribute="width" id="SgT-e6-eja"/>
                                     <constraint firstItem="hW8-gR-Xqz" firstAttribute="centerX" secondItem="Dd5-6p-uRn" secondAttribute="centerX" id="UOE-QN-gfv"/>
                                     <constraint firstItem="hW8-gR-Xqz" firstAttribute="width" secondItem="Dd5-6p-uRn" secondAttribute="width" id="Xv0-ud-h7V"/>
+                                    <constraint firstAttribute="bottom" secondItem="BAN-FR-x4z" secondAttribute="bottom" id="b1x-sc-NkT"/>
                                     <constraint firstItem="FrP-MZ-2AF" firstAttribute="leading" secondItem="KCK-ig-9ip" secondAttribute="leading" id="c82-DF-2ZV"/>
+                                    <constraint firstItem="Dd5-6p-uRn" firstAttribute="centerX" secondItem="BAN-FR-x4z" secondAttribute="centerX" id="jNE-T7-ZuN"/>
                                     <constraint firstAttribute="trailing" secondItem="FrP-MZ-2AF" secondAttribute="trailing" id="k1C-oV-tY0"/>
                                     <constraint firstItem="hW8-gR-Xqz" firstAttribute="height" secondItem="FrP-MZ-2AF" secondAttribute="height" id="lxJ-uR-cbl"/>
                                     <constraint firstItem="hW8-gR-Xqz" firstAttribute="top" secondItem="FrP-MZ-2AF" secondAttribute="bottom" id="nsG-8w-Fay"/>
+                                    <constraint firstItem="Dd5-6p-uRn" firstAttribute="height" secondItem="BAN-FR-x4z" secondAttribute="height" id="qdq-If-Olg"/>
+                                    <constraint firstItem="Dd5-6p-uRn" firstAttribute="width" secondItem="BAN-FR-x4z" secondAttribute="width" id="roj-NC-AdF"/>
                                     <constraint firstItem="hW8-gR-Xqz" firstAttribute="centerX" secondItem="FrP-MZ-2AF" secondAttribute="centerX" id="wK6-zb-Tkf"/>
                                 </constraints>
                             </scrollView>
                             <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3K9-2c-Wx9" userLabel="Autocompletion Table View">
                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="VqO-bQ-abM"/>
                                 </constraints>
@@ -106,10 +150,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Cd-4s-z2m"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="autocompleteTableView" destination="3K9-2c-Wx9" id="VS9-B2-hES"/>
+                        <outlet property="datePicker" destination="osg-Dx-4Lh" id="1ok-5i-Cnr"/>
                         <outlet property="fromTextField" destination="Mwa-k7-dy5" id="4Ge-I3-ntO"/>
                         <outlet property="mainScrollView" destination="KCK-ig-9ip" id="djQ-9y-aeQ"/>
+                        <outlet property="searchButton" destination="dii-R7-SSZ" id="Baz-D9-TWH"/>
                         <outlet property="tableViewBottomSpaceConstraint" destination="ypI-hf-lWK" id="3Ia-j0-jro"/>
                         <outlet property="tableViewHeightConstraint" destination="VqO-bQ-abM" id="fNY-Au-tbd"/>
                         <outlet property="toTextField" destination="uj7-5H-KRX" id="kdb-GL-D5Q"/>
@@ -122,7 +169,7 @@
         <scene sceneID="bxx-py-HDt">
             <objects>
                 <navigationController id="tro-rv-bij" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HVn-5l-WQU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="HVn-5l-WQU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
