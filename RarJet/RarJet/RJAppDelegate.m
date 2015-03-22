@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Mert Buran. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "RJAppDelegate.h"
 
-@interface AppDelegate ()
+@interface RJAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation RJAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

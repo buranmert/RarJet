@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Mert Buran. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "RJBaseViewController.h"
 
-@interface ViewController : UIViewController
+@interface RJViewController : RJBaseViewController
 
 
 @end
