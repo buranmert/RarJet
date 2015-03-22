@@ -18,9 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[UINavigationBar appearance] setBarTintColor:[RJRandomColorGenerator generateRandomColor]];
-    [[UINavigationBar appearance] setTintColor:[RJRandomColorGenerator generateRandomColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [RJRandomColorGenerator generateRandomColor]}];
+    [RJAppDelegate randomiseColors];
     return YES;
 }
 
@@ -44,6 +42,12 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
++ (void)randomiseColors {
+    [[UINavigationBar appearance] setBarTintColor:[RJRandomColorGenerator generateRandomColor]];
+    [[UINavigationBar appearance] setTintColor:[RJRandomColorGenerator generateRandomColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [RJRandomColorGenerator generateRandomColor]}];
 }
 
 @end

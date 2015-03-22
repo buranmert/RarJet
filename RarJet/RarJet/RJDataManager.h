@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface RJDataManager : NSObject
-@property (nonatomic, strong) NSString *currentLocaleString;
+@property (nonatomic, strong) NSString *currentLocaleString; //for future-use, will be useful after localization is implemented
 
 - (void)cancelNetworkOperations;
 - (void)fetchResultsWithSearchString:(NSString *)searchString

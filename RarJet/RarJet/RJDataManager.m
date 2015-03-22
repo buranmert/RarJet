@@ -22,7 +22,7 @@ static const NSInteger RJMinQueryLength = 2;
 - (instancetype)init {
     self = [super init];
     if (self != nil) {
-        self.currentLocaleString = @"en";
+        self.currentLocaleString = [[NSLocale preferredLanguages] firstObject]; //probably en or de
         NSURL *baseURL = [NSURL URLWithString:RJBaseURL];
         self.networkManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     }
